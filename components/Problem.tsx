@@ -30,9 +30,7 @@ export function Problem() {
           ease: "power4.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 75%",
-          },
-        }
+            start: "top 75%" } }
       );
     }, containerRef);
     return () => ctx.revert();
@@ -55,25 +53,28 @@ export function Problem() {
             <div className="text-secondary transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6 bg-secondary/10 p-4 md:p-6 rounded-full w-fit">
               <ShieldAlert size={32} className="md:w-10 md:h-10" strokeWidth={1.5} />
             </div>
-            <h3 className="text-2xl md:text-3xl font-semibold tracking-tight">No Trust</h3>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed balance">Unable to prove who they are or what their skills are to employers.</p>
+            <h3 className="text-2xl md:text-3xl font-semibold tracking-tight">Zero Trust</h3>
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed balance">Unable to prove who they are or what their skills are to employers in extreme low-data or offline environments.</p>
           </div>
           <div className="problem-fade flex flex-col gap-4 md:gap-6 items-center sm:items-start text-center sm:text-left group">
             <div className="text-primary transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6 bg-primary/10 p-4 md:p-6 rounded-full w-fit">
               <Users size={32} className="md:w-10 md:h-10" strokeWidth={1.5} />
             </div>
-            <h3 className="text-2xl md:text-3xl font-semibold tracking-tight">No Ecosystem</h3>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed balance">Disconnected from verified NGOs, modern employers, and welfare programs.</p>
+            <h3 className="text-2xl md:text-3xl font-semibold tracking-tight">Zero Ecosystem</h3>
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed balance">Disconnected from verified NGOs, modern employers, and welfare programs because the onboarding takes months.</p>
           </div>
           <div className="problem-fade flex flex-col gap-4 md:gap-6 items-center sm:items-start text-center sm:text-left group sm:col-span-2 lg:col-span-1">
             <div className="text-accent transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6 bg-accent/10 p-4 md:p-6 rounded-full w-fit">
               <Layers size={32} className="md:w-10 md:h-10" strokeWidth={1.5} />
             </div>
-            <h3 className="text-2xl md:text-3xl font-semibold tracking-tight">No Paperwork</h3>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed balance">Excluded systematically because of lack of official, centralized documents.</p>
+            <h3 className="text-2xl md:text-3xl font-semibold tracking-tight">Zero Paperwork</h3>
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed balance">Excluded systematically from opportunity due to an absolute lack of official, centralized identity documents.</p>
           </div>
         </div>
       </div>
     </section>
   );
 }
+
+
+

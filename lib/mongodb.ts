@@ -8,10 +8,10 @@ if (!MONGODB_URI) {
   );
 }
 
-let cached = (global as any).mongoose;
+let cached = (global as typeof globalThis & { mongoose: { conn: mongoose.Connection | null, promise: Promise<mongoose.Mongoose> | null } }).mongoose;
 
 if (!cached) {
-  cached = (global as any).mongoose = { conn: null, promise: null };
+  cached = (global as typeof globalThis & { mongoose: { conn: mongoose.Connection | null, promise: Promise<mongoose.Mongoose> | null } }).mongoose = { conn: null, promise: null };
 }
 
 async function connectToDatabase() {

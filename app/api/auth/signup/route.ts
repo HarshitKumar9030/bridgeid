@@ -37,7 +37,7 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ message: "User registered successfully.", user: { username: newUser.username, email: newUser.email } }, { status: 201 });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error creating user:", error);
     return NextResponse.json(
       { message: "An error occurred while creating the user." },

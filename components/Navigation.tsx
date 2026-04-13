@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { ArrowRight, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,24 +38,24 @@ export function Navigation() {
           style={{
             y: navY,
             scale: navScale,
-            backgroundColor: navBg,
-          }}
+            backgroundColor: navBg }}
           className="flex items-center justify-between w-full max-w-5xl rounded-[2rem] pl-6 pr-3 md:pl-8 py-3 backdrop-blur-xl border border-white/5 shadow-2xl pointer-events-auto transition-shadow"
         >
           <div className="font-bold text-xl tracking-tight text-foreground relative z-[60]">
-            BridgeID.
+            <Link href="/" className="hover:opacity-80 transition-opacity">BridgeID.</Link>
           </div>
           
           <div className="hidden md:flex items-center gap-10">
             <div className="flex items-center gap-8 text-sm font-medium text-foreground/60 transition-colors">
-              <a href="#problem" className="hover:text-primary transition-colors">Problem</a>
-              <a href="#solution" className="hover:text-primary transition-colors">Solution</a>
-              <a href="#ai" className="hover:text-primary transition-colors">Platform</a>
+              <Link href="/explore" className="hover:text-primary transition-colors text-primary font-bold">Explore Directory</Link>
+              <Link href="/#problem" className="hover:text-primary transition-colors">Problem</Link>
+              <Link href="/#solution" className="hover:text-primary transition-colors">Solution</Link>
+              <Link href="/#ai" className="hover:text-primary transition-colors">Platform</Link>
             </div>
 
-            <a href="/login" className="group flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:bg-white hover:text-black">
+            <Link href="/login" className="group flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all hover:bg-white hover:text-black">
               Access Network <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-            </a>
+            </Link>
           </div>
 
           <div className="flex md:hidden relative z-[60]">
@@ -88,16 +89,20 @@ export function Navigation() {
             className="fixed inset-0 z-50 bg-background/95 backdrop-blur-3xl flex flex-col items-center justify-center gap-8 px-6"
           >
             <div className="flex flex-col items-center gap-8 text-2xl font-medium text-foreground/80 mt-16">
-              <a href="#problem" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors">Problem</a>
-              <a href="#solution" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors">Solution</a>
-              <a href="#ai" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors">Platform</a>
+              <Link href="/explore" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors text-primary font-bold">Explore Directory</Link>
+              <Link href="/#problem" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors">Problem</Link>
+              <Link href="/#solution" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors">Solution</Link>
+              <Link href="/#ai" onClick={() => setIsOpen(false)} className="hover:text-primary transition-colors">Platform</Link>
             </div>
-            <button className="group flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 text-lg font-semibold text-primary-foreground transition-all hover:bg-white hover:text-black w-full max-w-sm mt-8">
+            <Link href="/login" className="group flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 text-lg font-semibold text-primary-foreground transition-all hover:bg-white hover:text-black w-full max-w-sm mt-8">
               Access Network <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
-            </button>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>
     </>
   );
 }
+
+
+

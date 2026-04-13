@@ -26,9 +26,7 @@ export function AIIntegration() {
           ease: "power3.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 60%",
-          },
-        }
+            start: "top 60%" } }
       );
     }, containerRef);
     return () => ctx.revert();
@@ -43,7 +41,7 @@ export function AIIntegration() {
             The Intelligence Layer
           </p>
           <h2 className="ai-fade text-5xl sm:text-[4rem] md:text-[5rem] font-bold tracking-tighter leading-[1] text-foreground">
-            Powered <br />by <span className="font-serif italic text-accent pr-2 md:pr-4">Gemini.</span>
+            Powered <br />by <span className="font-serif italic text-accent pr-2 md:pr-4">AI Analysis.</span>
           </h2>
           <p className="ai-fade mt-6 md:mt-8 text-xl md:text-3xl text-muted-foreground leading-relaxed max-w-lg">
             The engine automatically resolving logic gaps, prioritizing human needs, and destroying systemic fraud without friction.
@@ -80,3 +78,6 @@ export function AIIntegration() {
     </section>
   );
 }
+
+
+

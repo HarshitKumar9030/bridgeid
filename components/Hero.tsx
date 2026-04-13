@@ -25,7 +25,7 @@ export function Hero() {
         </h1>
         
         <p className="mt-8 md:mt-12 text-lg sm:text-xl md:text-2xl text-muted-foreground w-full max-w-sm sm:max-w-2xl leading-relaxed sm:leading-[1.4] mx-auto font-medium text-balance">
-          I am BridgeID, a decentralized trust platform. I build minimal, verifiable identity networks, community-backed trust, and transparent safety nets.
+          We are NOT heavy identity infrastructure. We are <strong className="text-foreground tracking-tight">trust, usability, and speed.</strong> Establish verifiable identity offline, without documents, in <strong className="text-primary italic font-serif">minutes, not months.</strong>
         </p>
 
         <motion.div
@@ -45,3 +45,6 @@ export function Hero() {
     </section>
   );
 }
+
+
+
