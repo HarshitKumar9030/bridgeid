@@ -31,7 +31,7 @@ export function Navigation() {
       <motion.header
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as const }}
         className="fixed top-6 md:top-8 left-0 right-0 z-[60] flex justify-center px-4 md:px-6 pointer-events-none"
       >
         <motion.nav
@@ -85,7 +85,7 @@ export function Navigation() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
             className="fixed inset-0 z-50 bg-background/95 backdrop-blur-3xl flex flex-col items-center justify-center gap-8 px-6"
           >
             <div className="flex flex-col items-center gap-8 text-2xl font-medium text-foreground/80 mt-16">

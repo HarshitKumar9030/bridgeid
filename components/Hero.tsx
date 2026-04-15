@@ -9,7 +9,7 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as const }}
         className="max-w-6xl w-full flex flex-col gap-6 md:gap-8 items-center"
       >
         <span className="text-secondary text-xs sm:text-sm md:text-base font-semibold tracking-[0.1em] sm:tracking-[0.15em] uppercase mb-4 text-balance">

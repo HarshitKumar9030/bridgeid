@@ -56,7 +56,7 @@ export function SignupForm() {
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
       className="bg-muted/10 p-10 sm:p-14 rounded-[2rem] w-full max-w-[600px] md:max-w-2xl relative z-10 backdrop-blur-2xl"
     >
       <div className="absolute inset-0 bg-white/5 rounded-[2rem] pointer-events-none" />

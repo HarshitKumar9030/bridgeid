@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { CheckCircle2, ShieldCheck, Database, Link as LinkIcon, Fingerprint } from "lucide-react";
 
 export function Solution() {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -12,9 +13,9 @@ export function Solution() {
         staggerChildren: 0.15,
         delayChildren: 0.3 } } };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, filter: "blur(8px)", y: 40 },
-    show: { opacity: 1, filter: "blur(0px)", y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } } };
+    show: { opacity: 1, filter: "blur(0px)", y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] as const } } };
 
   return (
     <section id="solution" className="py-24 md:py-40 px-6 sm:px-12 bg-transparent flex flex-col items-center justify-center text-foreground relative z-10 selection:bg-secondary/40 w-full overflow-hidden">
@@ -23,7 +24,7 @@ export function Solution() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as const }}
           className="flex flex-col gap-6 md:gap-8 w-full"
         >
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter text-foreground leading-[1.1] max-w-4xl mx-auto md:mx-0 text-balance">
