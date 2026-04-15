@@ -144,7 +144,7 @@ export function IdentityTable({ identities, onUpdated }: Props) {
     if (!ctx) return;
 
     const width = 800;
-    const height = 480;
+    const height = 540;
     canvas.width = width;
     canvas.height = height;
 
@@ -167,7 +167,7 @@ export function IdentityTable({ identities, onUpdated }: Props) {
     // Header text
     ctx.fillStyle = "#ffffff";
     ctx.font = "bold 36px 'Inter', sans-serif";
-    ctx.fillText("BRIDGE IDENTITY", 40, 65);
+    ctx.fillText("BridgeID", 40, 65);
 
     const loadImage = (src: string): Promise<HTMLImageElement> => {
       return new Promise((resolve) => {
@@ -283,6 +283,16 @@ export function IdentityTable({ identities, onUpdated }: Props) {
     ctx.font = "bold 20px 'Inter', sans-serif";
     ctx.fillText(item.needs.join(", ") || "None", textX, needsLabelY + 25);
 
+    const skillsLabelY = needsLabelY + 65;
+    ctx.font = "600 16px 'Inter', sans-serif";
+    ctx.fillStyle = "#6b7280";
+    ctx.fillText("SKILLS", textX, skillsLabelY);
+    
+    ctx.fillStyle = "#111827";
+    ctx.font = "bold 20px 'Inter', sans-serif";
+    const skillsText = item.skills.slice(0, 3).join(", ") || "Unspecified";
+    ctx.fillText(skillsText, textX, skillsLabelY + 25);
+
     // Trust Score Badge
     ctx.fillStyle = "#f3f4f6";
     if (ctx.roundRect) {
@@ -299,6 +309,20 @@ export function IdentityTable({ identities, onUpdated }: Props) {
                     trustTone(item.trustScore) === "text-accent" ? "#f59e0b" : "#ef4444";
     ctx.font = "bold 32px 'Inter', sans-serif";
     ctx.fillText(`${item.trustScore}`, textX + 195, 345);
+
+    // Verified By
+    ctx.fillStyle = "#6b7280";
+    ctx.font = "600 12px 'Inter', sans-serif";
+    ctx.fillText("VERIFIED BY", textX + 168, 385);
+    
+    let verifiers = [];
+    if (item.ngoVerified) verifiers.push("NGO");
+    if (item.communityConfirmations > 0) verifiers.push("Community");
+    const verifierText = verifiers.length > 0 ? verifiers.join(" + ") : "Network";
+    
+    ctx.fillStyle = "#111827";
+    ctx.font = "bold 13px 'Inter', sans-serif";
+    ctx.fillText(verifierText, textX + 168, 405);
 
     // QR Code area
     const qrX = 560;
@@ -329,7 +353,8 @@ export function IdentityTable({ identities, onUpdated }: Props) {
     ctx.fillRect(0, height - 50, width, 50);
     ctx.fillStyle = "#9ca3af";
     ctx.font = "600 14px 'Inter', sans-serif";
-    ctx.fillText(`ISSUED: ${new Date().toLocaleDateString()}`, 40, height - 20);
+    const updateDate = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+    ctx.fillText(`LAST UPDATED: ${updateDate}`, 40, height - 20);
     ctx.fillText("BRIDGE IDENTITY PROTOCOL", width - 240, height - 20);
 
     const dataUrl = canvas.toDataURL("image/png");
@@ -371,7 +396,7 @@ export function IdentityTable({ identities, onUpdated }: Props) {
           <div className="max-h-[500px] overflow-auto custom-scrollbar">
             <table className="w-full min-w-[920px] table-fixed border-separate border-spacing-y-2">
               <thead>
-                <tr className="text-left text-[10px] md:text-xs uppercase tracking-widest text-muted-foreground bg-white/5 rounded-xl">
+                <tr className="text-left text-[10px] md:text-xs uppercase tracking-widest text-muted-foreground bg-muted/40 rounded-xl">
                   <th className="px-4 py-4 w-1/6 rounded-l-2xl">Alias</th>
                   <th className="px-4 py-4 w-1/6">Identity ID</th>
                   <th className="px-4 py-4 w-1/6">Needs</th>
@@ -396,18 +421,18 @@ export function IdentityTable({ identities, onUpdated }: Props) {
                       transition={{ type: "spring", stiffness: 350, damping: 30 }}
                       style={{ originY: 0.5 }}
                     >
-                      <td className="bg-white/5 group-hover:bg-white/10 transition-colors px-4 py-5 font-bold tracking-tight text-foreground truncate rounded-l-2xl">{item.alias}</td>
-                      <td className="bg-white/5 group-hover:bg-white/10 transition-colors px-4 py-5 text-muted-foreground font-medium font-mono text-sm truncate">{item.identityId.slice(0, 8)}...</td>
-                      <td className="bg-white/5 group-hover:bg-white/10 transition-colors px-4 py-5 text-muted-foreground truncate">{item.needs.join(", ") || "Other"}</td>
-                      <td className="bg-white/5 group-hover:bg-white/10 transition-colors px-4 py-5 text-muted-foreground truncate">{item.location}</td>
-                      <td className={`bg-white/5 group-hover:bg-white/10 transition-colors px-4 py-5 font-bold ${trustTone(item.trustScore)}`}>{item.trustScore}</td>
-                      <td className="bg-white/5 group-hover:bg-white/10 transition-colors px-4 py-5 text-muted-foreground font-medium whitespace-nowrap">{new Date(item.createdAt).toLocaleDateString()}</td>
-                      <td className="bg-white/5 group-hover:bg-white/10 transition-colors px-4 py-5 text-right rounded-r-2xl">
+                      <td className="bg-muted/40 group-hover:bg-muted transition-colors px-4 py-5 font-bold tracking-tight text-foreground truncate rounded-l-2xl">{item.alias}</td>
+                      <td className="bg-muted/40 group-hover:bg-muted transition-colors px-4 py-5 text-muted-foreground font-medium font-mono text-sm truncate">{item.identityId.slice(0, 8)}...</td>
+                      <td className="bg-muted/40 group-hover:bg-muted transition-colors px-4 py-5 text-muted-foreground truncate">{item.needs.join(", ") || "Other"}</td>
+                      <td className="bg-muted/40 group-hover:bg-muted transition-colors px-4 py-5 text-muted-foreground truncate">{item.location}</td>
+                      <td className={`bg-muted/40 group-hover:bg-muted transition-colors px-4 py-5 font-bold ${trustTone(item.trustScore)}`}>{item.trustScore}</td>
+                      <td className="bg-muted/40 group-hover:bg-muted transition-colors px-4 py-5 text-muted-foreground font-medium whitespace-nowrap">{new Date(item.createdAt).toLocaleDateString()}</td>
+                      <td className="bg-muted/40 group-hover:bg-muted transition-colors px-4 py-5 text-right rounded-r-2xl">
                         <button
                           onClick={(e) => downloadIdentityCard(item, e)}
                           className="inline-flex px-3 py-1.5 hover:scale-105 rounded-xl bg-foreground text-background font-bold text-[10px] transition-transform duration-300 uppercase tracking-wider"
                         >
-                          DOWNLOAD ID
+                          dl
                         </button>
                       </td>
                     </motion.tr>
@@ -431,19 +456,19 @@ export function IdentityTable({ identities, onUpdated }: Props) {
             />
             <motion.div
               layoutId={`row-${selectedItem._id}`}
-              className="relative w-full max-w-3xl bg-[#0a0a0a] border border-white/10 rounded-[2.5rem] shadow-2xl overflow-hidden pointer-events-auto flex flex-col max-h-[90vh] z-10"
+              className="relative w-full max-w-3xl bg-background border border-border rounded-[2.5rem] shadow-2xl overflow-hidden pointer-events-auto flex flex-col max-h-[90vh] z-10"
               transition={{ type: "spring", stiffness: 350, damping: 30 }}
             >
               <motion.div 
                 {...springContent}
                 className="flex flex-col flex-1 overflow-hidden"
               >
-              <div className="p-6 md:p-8 flex items-start justify-between border-b border-white/5 bg-white/5">
+              <div className="p-6 md:p-8 flex items-start justify-between border-b border-border bg-muted/20">
                 <div className="flex gap-6 items-center">
                   {selectedItem.photoUrl ? (
-                    <img src={selectedItem.photoUrl} alt="Photo" className="w-20 h-20 rounded-2xl object-cover border border-white/10 shadow-lg" />
+                    <img src={selectedItem.photoUrl} alt="Photo" className="w-20 h-20 rounded-2xl object-cover border border-border shadow-lg" />
                   ) : (
-                    <div className="w-20 h-20 rounded-2xl bg-muted border border-white/10 flex items-center justify-center font-bold text-3xl text-muted-foreground shadow-lg">
+                    <div className="w-20 h-20 rounded-2xl bg-muted border border-border flex items-center justify-center font-bold text-3xl text-muted-foreground shadow-lg">
                       {selectedItem.alias.charAt(0)}
                     </div>
                   )}
@@ -454,7 +479,7 @@ export function IdentityTable({ identities, onUpdated }: Props) {
                         <span className="bg-primary/20 text-primary text-[10px] uppercase tracking-widest px-2 py-1 rounded-full font-bold">Verified</span>
                       )}
                     </h2>
-                    <p className="font-mono text-sm text-muted-foreground mt-1 bg-black/20 px-3 py-1 rounded-full inline-block">
+                    <p className="font-mono text-sm text-muted-foreground mt-1 bg-muted/50 px-3 py-1 rounded-full inline-block">
                       ID: {selectedItem.identityId}
                     </p>
                   </div>
@@ -464,7 +489,7 @@ export function IdentityTable({ identities, onUpdated }: Props) {
                     <button
                       type="button"
                       onClick={() => setIsEditing(true)}
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-foreground hover:bg-white/20 transition-colors"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted/50 text-foreground hover:bg-muted transition-colors"
                     >
                       <Pencil size={16} />
                       Edit
@@ -474,7 +499,7 @@ export function IdentityTable({ identities, onUpdated }: Props) {
                       <button
                         type="button"
                         onClick={() => setIsEditing(false)}
-                        className="px-4 py-2 rounded-full bg-white/10 text-foreground hover:bg-white/20 transition-colors"
+                        className="px-4 py-2 rounded-full bg-muted/50 text-foreground hover:bg-muted transition-colors"
                       >
                         Cancel
                       </button>
@@ -491,7 +516,7 @@ export function IdentityTable({ identities, onUpdated }: Props) {
                   )}
                   <button
                     onClick={closeModal}
-                    className="p-3 rounded-full hover:bg-white/10 transition-colors text-muted-foreground hover:text-foreground"
+                    className="p-3 rounded-full hover:bg-muted/50 transition-colors text-muted-foreground hover:text-foreground"
                   >
                     <X size={24} />
                   </button>
@@ -643,7 +668,7 @@ export function IdentityTable({ identities, onUpdated }: Props) {
                                   <span className="truncate">NGO</span>
                                   <span className="text-foreground">{selectedItem.ngoVerified ? '+50' : '+0'}</span>
                                 </div>
-                                <div className="h-1.5 w-full bg-black/40 rounded-full overflow-hidden">
+                                <div className="h-1.5 w-full bg-muted/60 rounded-full overflow-hidden">
                                   <div className="h-full bg-primary transition-all duration-1000" style={{ width: selectedItem.ngoVerified ? '100%' : '0%' }}></div>
                                 </div>
                               </div>
@@ -652,7 +677,7 @@ export function IdentityTable({ identities, onUpdated }: Props) {
                                   <span className="truncate">Community</span>
                                   <span className="text-foreground">+{Math.min(selectedItem.communityConfirmations, 3) * 10}</span>
                                 </div>
-                                <div className="h-1.5 w-full bg-black/40 rounded-full overflow-hidden">
+                                <div className="h-1.5 w-full bg-muted/60 rounded-full overflow-hidden">
                                   <div className="h-full bg-secondary transition-all duration-1000" style={{ width: `${(Math.min(selectedItem.communityConfirmations, 3) / 3) * 100}%` }}></div>
                                 </div>
                               </div>
@@ -661,7 +686,7 @@ export function IdentityTable({ identities, onUpdated }: Props) {
                                   <span className="truncate">Interactions</span>
                                   <span className="text-foreground">+{Math.min(selectedItem.interactionsCount, 20)}</span>
                                 </div>
-                                <div className="h-1.5 w-full bg-black/40 rounded-full overflow-hidden">
+                                <div className="h-1.5 w-full bg-muted/60 rounded-full overflow-hidden">
                                   <div className="h-full bg-accent transition-all duration-1000" style={{ width: `${(Math.min(selectedItem.interactionsCount, 20) / 20) * 100}%` }}></div>
                                 </div>
                               </div>
@@ -686,19 +711,19 @@ export function IdentityTable({ identities, onUpdated }: Props) {
                       <div>
                         <h3 className="text-xs uppercase tracking-widest text-muted-foreground font-bold mb-3">Core Information</h3>
                         <ul className="space-y-4 text-sm font-medium">
-                          <li className="flex justify-between items-center bg-white/5 p-3 rounded-xl">
+                          <li className="flex justify-between items-center bg-muted/40 p-3 rounded-xl">
                             <span className="text-muted-foreground">Age Range</span>
                             <span className="text-foreground">{selectedItem.ageRange}</span>
                           </li>
-                          <li className="flex justify-between items-center bg-white/5 p-3 rounded-xl">
+                          <li className="flex justify-between items-center bg-muted/40 p-3 rounded-xl">
                             <span className="text-muted-foreground">Location</span>
                             <span className="text-foreground">{selectedItem.location}</span>
                           </li>
-                          <li className="flex justify-between items-center bg-white/5 p-3 rounded-xl">
+                          <li className="flex justify-between items-center bg-muted/40 p-3 rounded-xl">
                             <span className="text-muted-foreground">Confirmations</span>
                             <span className="text-foreground font-mono">{selectedItem.communityConfirmations}</span>
                           </li>
-                          <li className="flex justify-between items-center bg-white/5 p-3 rounded-xl">
+                          <li className="flex justify-between items-center bg-muted/40 p-3 rounded-xl">
                             <span className="text-muted-foreground">Interactions</span>
                             <span className="text-foreground font-mono">{selectedItem.interactionsCount}</span>
                           </li>
@@ -727,7 +752,7 @@ export function IdentityTable({ identities, onUpdated }: Props) {
                         <h3 className="text-xs uppercase tracking-widest text-muted-foreground font-bold mb-3">Self-Reported Skills</h3>
                         <div className="flex flex-wrap gap-2">
                           {selectedItem.skills.map((skill) => (
-                            <span key={skill} className="bg-white/10 text-foreground border border-white/10 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide capitalize">
+                            <span key={skill} className="bg-muted text-foreground border border-border px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide capitalize">
                               {skill}
                             </span>
                           ))}
@@ -737,13 +762,16 @@ export function IdentityTable({ identities, onUpdated }: Props) {
 
                       <div>
                         <h3 className="text-xs uppercase tracking-widest text-muted-foreground font-bold mb-3 mt-8">Quick Actions</h3>
-                        <div className="flex justify-between items-center p-4 rounded-2xl bg-foreground text-background">
+                        <button 
+                          onClick={(e) => downloadIdentityCard(selectedItem, e)}
+                          className="w-full flex justify-between items-center p-4 rounded-2xl bg-foreground text-background hover:scale-[1.02] transition-transform text-left"
+                        >
                           <div>
                             <p className="font-bold text-sm">Identity QR Code</p>
                             <p className="text-xs opacity-70">Download verifiable card</p>
                           </div>
                           <img src={selectedItem.qrCodeDataUrl} className="w-12 h-12 rounded bg-white" alt="QR" />
-                        </div>
+                        </button>
                       </div>
                     </div>
                   </div>
