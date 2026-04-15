@@ -2,7 +2,7 @@ import connectToDatabase from "@/lib/mongodb";
 import Identity from "@/models/Identity";
 import { ExploreGrid } from "@/components/ExploreGrid";
 
-export const revalidate = 60; // Cache this page for 60 seconds
+export const dynamic = "force-dynamic";
 
 export default async function ExplorePage() {
   await connectToDatabase();
