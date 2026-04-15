@@ -45,18 +45,27 @@ export function Pitch() {
         </div>
 
         {/* Impact Proof Section */}
-        <motion.div variants={item} className="w-full mt-16 md:mt-24 p-8 md:p-12 bg-muted/20 border border-white/5 rounded-[2.5rem] relative overflow-hidden text-left">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[100px] rounded-full pointer-events-none" />
-          <h3 className="text-2xl md:text-4xl font-bold tracking-tight text-foreground mb-6 flex items-center gap-4">
-            <span className="w-2 h-8 bg-primary rounded-full"></span> Impact Proof
-          </h3>
-          <p className="text-xl md:text-3xl text-muted-foreground leading-[1.6] max-w-4xl font-medium">
-            "In a pilot scenario, a worker with no documents was onboarded in under 2 minutes and matched to a local employer using skill tags."
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <span className="bg-primary/10 border border-primary/20 text-primary px-4 py-2 rounded-full text-sm font-bold tracking-wide uppercase">0 Documents</span>
-            <span className="bg-secondary/10 border border-secondary/20 text-secondary px-4 py-2 rounded-full text-sm font-bold tracking-wide uppercase">&lt; 2 Minutes</span>
-            <span className="bg-accent/10 border border-accent/20 text-accent px-4 py-2 rounded-full text-sm font-bold tracking-wide uppercase">Skill Matched</span>
+        <motion.div variants={item} className="mt-16 md:mt-32 w-full flex flex-col md:flex-row gap-12 lg:gap-24 items-start md:items-center text-left py-12 md:py-16 border-y border-white/5 relative z-10">
+          <div className="flex-1 w-full lg:max-w-2xl">
+            <h3 className="text-sm font-semibold tracking-widest text-primary uppercase mb-6">Impact Proof</h3>
+            <p className="text-2xl sm:text-3xl md:text-4xl text-foreground font-medium leading-snug md:leading-tight text-balance">
+              In a pilot scenario, a worker with no documents was onboarded in under 2 minutes and matched to a local employer using skill tags.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-12 shrink-0 md:w-auto">
+            <div className="flex flex-col gap-2">
+              <span className="text-5xl md:text-6xl font-bold tracking-tighter text-foreground">0</span>
+              <span className="text-sm md:text-base text-muted-foreground uppercase tracking-wider font-semibold">Documents Required</span>
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="text-5xl md:text-6xl font-bold tracking-tighter text-foreground">&lt; 2m</span>
+              <span className="text-sm md:text-base text-muted-foreground uppercase tracking-wider font-semibold">Setup Time</span>
+            </div>
+            <div className="flex flex-col gap-2 col-span-1 sm:col-span-2">
+              <span className="text-5xl md:text-6xl font-bold tracking-tighter text-foreground">100%</span>
+              <span className="text-sm md:text-base text-muted-foreground uppercase tracking-wider font-semibold">Skill Matched to Employer</span>
+            </div>
           </div>
         </motion.div>
 
