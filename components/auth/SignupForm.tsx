@@ -21,8 +21,7 @@ export function SignupForm() {
         const createRes = await fetch("/api/auth/signup", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ username, email, password }),
-        });
+          body: JSON.stringify({ username, email, password }) });
 
         const data = await createRes.json();
 
@@ -34,8 +33,7 @@ export function SignupForm() {
         const res = await signIn("credentials", {
           username,
           password,
-          redirect: false,
-        });
+          redirect: false });
     
         if (res?.error) {
           setError("Error logging in after creation.");
@@ -139,3 +137,5 @@ export function SignupForm() {
     </motion.div>
   );
 }
+
+

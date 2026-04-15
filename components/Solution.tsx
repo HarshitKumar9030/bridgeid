@@ -10,15 +10,11 @@ export function Solution() {
       opacity: 1,
       transition: {
         staggerChildren: 0.15,
-        delayChildren: 0.3,
-      },
-    },
-  };
+        delayChildren: 0.3 } } };
 
   const itemVariants = {
     hidden: { opacity: 0, filter: "blur(8px)", y: 40 },
-    show: { opacity: 1, filter: "blur(0px)", y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } },
-  };
+    show: { opacity: 1, filter: "blur(0px)", y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } } };
 
   return (
     <section id="solution" className="py-24 md:py-40 px-6 sm:px-12 bg-transparent flex flex-col items-center justify-center text-foreground relative z-10 selection:bg-secondary/40 w-full overflow-hidden">
@@ -49,9 +45,9 @@ export function Solution() {
             <div className="w-16 h-16 md:w-20 md:h-20 bg-primary/10 rounded-[1.5rem] md:rounded-[2rem] flex items-center justify-center text-primary group-hover:scale-105 transition-transform duration-500">
               <Fingerprint size={32} className="md:w-10 md:h-10" strokeWidth={1} />
             </div>
-            <h3 className="text-3xl md:text-5xl font-semibold tracking-tight">1. Instant Onboarding</h3>
+            <h3 className="text-3xl md:text-5xl font-semibold tracking-tight">1. Minutes, Not Months</h3>
             <p className="text-lg md:text-2xl text-muted-foreground leading-relaxed text-balance">
-              Create a progressive profile instantly using aliases, basic skills setup, and optional photos safely generating a QR-backed anonymous UUID ID.
+              Create a progressive profile instantly <strong className="text-foreground font-medium">without prior documents.</strong> Built for low-data environments and offline QR scanning so nobody is left stranded in the field.
             </p>
           </motion.div>
 
@@ -89,3 +85,6 @@ export function Solution() {
     </section>
   );
 }
+
+
+

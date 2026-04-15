@@ -18,8 +18,7 @@ export function LoginForm() {
     const res = await signIn("credentials", {
       username,
       password,
-      redirect: false,
-    });
+      redirect: false });
 
     if (res?.error) {
       setError("Invalid credentials. Try user/password");
@@ -99,7 +98,7 @@ export function LoginForm() {
         </button>
 
         <p className="text-center text-muted-foreground mt-8">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <Link href="/signup" className="text-foreground hover:text-primary transition-colors underline underline-offset-4 decoration-primary/30 hover:decoration-primary">
             Create one
           </Link>
@@ -108,3 +107,6 @@ export function LoginForm() {
     </motion.div>
   );
 }
+
+
+

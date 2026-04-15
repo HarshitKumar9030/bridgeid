@@ -3,6 +3,8 @@ import { Inter, Newsreader, Poppins } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Navigation } from "@/components/Navigation";
+import { cn } from "@/lib/utils";
+
 
 const inter = Inter({
   variable: "--font-inter",
@@ -35,9 +37,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} overflow-x-hidden ${newsreader.variable} ${inter.className} ${poppins.variable} h-full antialiased`}
+      className={cn("antialiased", inter.variable, newsreader.variable, inter.className, poppins.variable, "font-sans scroll-smooth")}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body className="min-h-screen flex flex-col bg-background text-foreground w-full">
         <SmoothScroll>
           <Navigation />
           {children}
@@ -46,3 +48,4 @@ export default function RootLayout({
     </html>
   );
 }
+

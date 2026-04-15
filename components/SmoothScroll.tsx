@@ -15,8 +15,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 2,
-    });
+      touchMultiplier: 2 });
 
     function raf(time: number) {
       if (lenisRef.current) {
@@ -36,3 +35,5 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
   return <>{children}</>;
 }
+
+
