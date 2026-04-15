@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("antialiased", inter.variable, newsreader.variable, inter.className, poppins.variable, "font-sans scroll-smooth overflow-x-hidden")}
+      className={cn("antialiased", inter.variable, newsreader.variable, inter.className, poppins.variable, "font-sans scroll-smooth")}
     >
       <body className="min-h-screen flex flex-col bg-background text-foreground w-full">
         <SmoothScroll>
