@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 
 export function Pitch() {
-  const container = {
+  const container: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -11,9 +12,9 @@ export function Pitch() {
         staggerChildren: 0.15,
         delayChildren: 0.2 } } };
 
-  const item = {
+  const item: Variants = {
     hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } } };
+    show: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] as const } } };
 
   return (
     <section className="py-24 md:py-40 px-6 sm:px-12 bg-transparent flex flex-col items-center justify-center text-center relative z-10 w-full overflow-hidden">
